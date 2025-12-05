@@ -5,195 +5,195 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ahmad Pijar — Portfolio</title>
 
-    <!-- Tailwind CDN -->
+    <!-- Tailwind -->
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- Lucide Icons CDN -->
-    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
-
-    <!-- Custom JS -->
-    <script defer src="./script.js"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
 
     <style>
       body {
         scroll-behavior: smooth;
       }
 
-      /* Navbar initial / scrolled states */
-      .navbar-top {
-        background: transparent;
-        transition: background 0.28s ease-in-out, box-shadow 0.28s ease-in-out;
-      }
       .navbar-scroll {
-        /* Tailwind @apply is not processed here, so mirror styles */
         background: rgba(255, 255, 255, 0.9);
         backdrop-filter: blur(6px);
         box-shadow: 0 6px 20px rgba(2, 6, 23, 0.06);
-        transition: background 0.28s ease-in-out, box-shadow 0.28s ease-in-out;
-      }
-
-      /* Small image border effect */
-      .photo-ring {
-        box-shadow: 0 12px 30px rgba(2, 6, 23, 0.08);
-        border-radius: 1rem;
-        overflow: hidden;
       }
     </style>
   </head>
+
   <body class="bg-slate-50 text-slate-800">
-    <!-- NAVBAR -->
-    <nav class="sticky top-0 z-50 navbar-top border-b border-transparent">
+    <!-- ==========================
+         NAVBAR (Updated)
+    =========================== -->
+    <nav
+      id="navbar"
+      class="fixed top-0 left-0 w-full z-50 transition-all border-b border-transparent"
+    >
       <div
-        class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between"
+        class="max-w-6xl mx-auto px-6 h-20 flex justify-between items-center"
       >
-        <a
-          href="https://ahmadpijar.github.io"
-          class="text-2xl font-bold bg-gradient-to-r from-blue-700 to-purple-600 bg-clip-text text-transparent"
+        <!-- Logo -->
+        <h1
+          class="text-xl font-bold cursor-pointer bg-gradient-to-r from-blue-700 to-purple-600 bg-clip-text text-transparent"
         >
-          Ahmad <span class="font-light text-slate-700">Pijar</span>
-        </a>
+          My Portfolio
+        </h1>
 
-        <div class="hidden md:flex items-center gap-6">
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex gap-8">
           <a
-            href="https://ahmadpijar.github.io"
-            class="text-slate-700 hover:text-blue-700 font-medium"
-            >Home</a
+            href="https://ahmadpijar.github.io/my-portofolio"
+            class="text-sm font-medium text-slate-700 hover:text-blue-600"
           >
+            Home
+          </a>
           <a
-            href="https://ahmadpijar.github.io/my-portofolio/"
-            class="text-slate-600 hover:text-blue-700"
-            >About</a
+            href="https://ahmadpijar.github.io/my-portofolio/about"
+            class="text-sm font-medium text-slate-700 hover:text-blue-600"
           >
+            About
+          </a>
           <a
-            href="https://ahmadpijar.github.io/my-portofolio/"
-            class="text-slate-600 hover:text-blue-700"
-            >Projects</a
+            href="https://ahmadpijar.github.io/my-portofolio/projects"
+            class="text-sm font-medium text-slate-700 hover:text-blue-600"
           >
-
+            Projects
+          </a>
           <a
-            href="https://ahmadpijar.github.io/my-portofolio/"
-            class="px-5 py-2 rounded-full bg-slate-900 text-white hover:bg-slate-800 font-semibold shadow-md"
+            href="https://ahmadpijar.github.io/my-portofolio/contact"
+            class="text-sm font-medium text-slate-700 hover:text-blue-600"
           >
             Contact
           </a>
         </div>
 
-        <!-- Mobile Menu Button -->
-        <button
-          id="menu-btn"
-          class="md:hidden p-2 rounded-lg text-slate-700 hover:bg-slate-100"
-        >
+        <!-- Mobile Button -->
+        <button id="menu-btn" class="md:hidden">
           <i data-lucide="menu"></i>
         </button>
       </div>
 
       <!-- Mobile Menu -->
-      <div id="mobile-menu" class="md:hidden hidden px-6 pb-4 space-y-3">
-        <a
-          href="https://ahmadpijar.github.io"
-          class="block py-2 text-slate-600 hover:text-blue-700"
-          >Home</a
-        >
-        <a
-          href="https://ahmadpijar.github.io/my-portofolio/"
-          class="block py-2 text-slate-600 hover:text-blue-700"
-          >About</a
-        >
-        <a
-          href="https://ahmadpijar.github.io/my-portofolio/"
-          class="block py-2 text-slate-600 hover:text-blue-700"
-          >Projects</a
-        >
-        <a
-          href="https://ahmadpijar.github.io/my-portofolio/"
-          class="block py-2 text-slate-600 hover:text-blue-700"
-          >Services</a
-        >
-
-        <a
-          href="https://ahmadpijar.github.io/my-portofolio/"
-          class="block w-full text-center px-5 py-2 rounded-full bg-slate-900 text-white hover:bg-slate-800 font-semibold shadow-md"
-        >
-          Contact
-        </a>
+      <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg">
+        <div class="flex flex-col p-4 gap-2">
+          <a
+            href="https://ahmadpijar.github.io/my-portofolio"
+            class="text-sm py-2 px-3 rounded-lg hover:bg-slate-100"
+          >
+            Home
+          </a>
+          <a
+            href="https://ahmadpijar.github.io/my-portofolio/about"
+            class="text-sm py-2 px-3 rounded-lg hover:bg-slate-100"
+          >
+            About
+          </a>
+          <a
+            href="https://ahmadpijar.github.io/my-portofolio/projects"
+            class="text-sm py-2 px-3 rounded-lg hover:bg-slate-100"
+          >
+            Projects
+          </a>
+          <a
+            href="https://ahmadpijar.github.io/my-portofolio/contact"
+            class="text-sm py-2 px-3 rounded-lg hover:bg-slate-100"
+          >
+            Contact
+          </a>
+        </div>
       </div>
     </nav>
 
-    <!-- HERO SECTION (updated: right side uses photo) -->
+    <script>
+      lucide.createIcons();
+
+      const nav = document.getElementById("navbar");
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 20) nav.classList.add("navbar-scroll");
+        else nav.classList.remove("navbar-scroll");
+      });
+
+      const btn = document.getElementById("menu-btn");
+      const menu = document.getElementById("mobile-menu");
+      btn.addEventListener("click", () => {
+        menu.classList.toggle("hidden");
+      });
+    </script>
+
+    <!-- ==========================
+         HERO SECTION (Matching React)
+    =========================== -->
     <section
-      class="max-w-6xl mx-auto px-6 py-20 flex flex-col md:flex-row items-center gap-16"
+      class="max-w-6xl mx-auto px-6 py-24 md:pt-36 flex flex-col md:flex-row items-center gap-20"
     >
-      <!-- Left: badge + headline + subtext + CTA -->
+      <!-- Left -->
       <div class="md:w-1/2 space-y-6">
-        <!-- Badge -->
         <div
           class="inline-flex items-center px-3 py-1 bg-blue-50 border border-blue-200 text-xs rounded-full text-blue-700 font-semibold"
         >
           <span
             class="w-2 h-2 rounded-full bg-blue-700 mr-2 animate-pulse"
           ></span>
-          Ready to work — January 2026
+          Ready to work
         </div>
 
-        <!-- Headline -->
         <h1 class="text-5xl md:text-6xl font-extrabold leading-tight">
           Hi, I'm
           <span
             class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600"
-            >Ahmad Pijar Maulana</span
           >
+            Ahmad Pijar Maulana
+          </span>
         </h1>
 
-        <!-- Subtext -->
         <p class="text-lg text-slate-600 leading-relaxed max-w-md">
-          In this portfolio website, you can explore my training experience,
-          digital skills, and readiness to start working in January 2026.
+          In this portfolio website you will know more about me, including my
+          skills and background, and my projects.
         </p>
 
-        <!-- CTAs -->
-        <div class="flex gap-4 pt-4">
+        <div class="flex flex-wrap gap-4 pt-6">
           <a
-            href="https://ahmadpijar.github.io/my-portofolio/"
-            class="px-8 py-3 bg-slate-900 text-white rounded-lg font-medium hover:bg-slate-800 transition shadow-xl hover:-translate-y-1"
+            href="https://ahmadpijar.github.io/my-portofolio/about"
+            class="px-8 py-3 bg-slate-900 text-white rounded-lg font-semibold shadow-md hover:bg-slate-800 hover:shadow-lg hover:-translate-y-0.5 transition-all"
           >
             See My Profile
           </a>
+
           <a
-            href="https://ahmadpijar.github.io/my-portofolio/"
-            class="px-8 py-3 bg-white border border-slate-300 text-slate-700 rounded-lg font-medium hover:bg-slate-50 transition hover:-translate-y-1"
+            href="https://ahmadpijar.github.io/my-portofolio/contact"
+            class="px-8 py-3 bg-white border border-slate-300 text-slate-700 rounded-lg font-semibold shadow-md hover:bg-slate-100 hover:shadow-lg hover:-translate-y-0.5 transition-all"
           >
             Contact Me
           </a>
         </div>
       </div>
 
-      <!-- Right: Photo card -->
+      <!-- Right -->
       <div class="md:w-1/2 flex justify-center">
         <div
-          class="w-full max-w-sm mx-auto photo-ring rounded-2xl p-6 bg-gradient-to-tr from-slate-100 to-blue-50 border border-white"
+          class="w-full max-w-sm mx-auto rounded-2xl p-6 bg-gradient-to-tr from-slate-100 to-blue-50 border border-white shadow-xl"
         >
-          <!-- photo container -->
           <div class="flex flex-col items-center gap-4">
-            <!-- Rounded portrait -->
             <div
               class="w-60 h-60 rounded-full overflow-hidden border-4 border-white shadow-lg"
             >
-              <!-- Replace src with your own file path (e.g., ./assets/avatar.jpg) -->
               <img
-                src="./assets/Me.jpg"
+                src="./asset/Me.jpg"
                 alt="Ahmad Pijar"
                 class="w-full h-full object-cover"
-                loading="lazy"
               />
             </div>
 
-            <!-- small info card -->
             <div class="bg-white rounded-xl shadow p-4 text-center w-full">
               <div class="text-sm text-slate-600 font-mono">
-                Digital Office Administration • BBPVP
+                Ahmad Pijar Maulana
               </div>
               <div class="mt-2 text-xs text-slate-500">
-                Practical experience in document management & Google Workspace
+                currently enrolled in a training program for digital office
+                administration at BBPVP bekasi
               </div>
             </div>
           </div>
@@ -201,13 +201,15 @@
       </div>
     </section>
 
-    <!-- PROCESS SECTION -->
+    <!-- ==========================
+         DISCOVER SECTION (React version)
+    =========================== -->
     <section class="max-w-6xl mx-auto px-6 py-20 border-t border-slate-200">
       <div class="text-center mb-14">
         <h2 class="text-3xl font-bold">
-          What will you discover on this website
+          What Will You Discover on This Portfolio?
         </h2>
-        <p class="text-slate-500 mt-2">
+        <p class="text-slate-500 mt-2 max-w-xl mx-auto">
           A quick overview of my journey, the skills I’ve learned, and the work
           I’ve created during my digital training.
         </p>
@@ -267,31 +269,34 @@
       </div>
     </section>
 
-    <!-- STATS -->
+    <!-- ==========================
+         STATS SECTION (React version)
+    =========================== -->
     <section class="max-w-6xl mx-auto px-6 py-20">
       <div
-        class="bg-slate-900 text-white rounded-3xl p-10 text-center relative overflow-hidden"
+        class="bg-slate-900 text-white rounded-3xl p-10 md:p-16 text-center relative overflow-hidden"
       >
         <h2 class="text-3xl font-bold mb-4">Professional Highlights</h2>
-        <p class="text-slate-300 mb-10 max-w-xl mx-auto">
+
+        <p class="text-slate-400 mb-10 max-w-xl mx-auto">
           A quick look at my progress, learning journey, and readiness to begin
           my professional career.
         </p>
 
-        <div class="flex flex-wrap justify-center gap-16">
+        <div class="flex flex-wrap justify-center gap-8 md:gap-16">
           <div>
-            <div class="text-4xl font-bold">6+</div>
-            <p class="text-sm text-slate-400">Months of Training</p>
-          </div>
-
-          <div>
-            <div class="text-4xl font-bold">10+</div>
-            <p class="text-sm text-slate-400">Tools Learned</p>
+            <div class="text-4xl font-bold">3+</div>
+            <p class="text-sm text-slate-400">Year of work experience</p>
           </div>
 
           <div>
             <div class="text-4xl font-bold">5+</div>
-            <p class="text-sm text-slate-400">Projects & Assignments</p>
+            <p class="text-sm text-slate-400">Digital tool Skills</p>
+          </div>
+
+          <div>
+            <div class="text-4xl font-bold">3</div>
+            <p class="text-sm text-slate-400">Personal Projects</p>
           </div>
 
           <div>
@@ -299,19 +304,33 @@
             <p class="text-sm text-slate-400">Ready to Work</p>
           </div>
         </div>
+
+        <!-- Lights -->
+        <div
+          class="absolute top-0 left-0 w-full h-full opacity-20 pointer-events-none"
+        >
+          <div
+            class="absolute top-0 right-0 w-64 h-64 bg-blue-600 rounded-full blur-[100px] translate-x-1/2 -translate-y-1/2"
+          ></div>
+          <div
+            class="absolute bottom-0 left-0 w-64 h-64 bg-purple-600 rounded-full blur-[100px] -translate-x-1/2 translate-y-1/2"
+          ></div>
+        </div>
       </div>
     </section>
-    <!-- FOOTER -->
+
+    <!-- ==========================
+         FOOTER
+    =========================== -->
     <footer
       class="bg-white border-t border-slate-200 py-8 text-center text-slate-500 text-sm"
     >
       <div class="flex justify-center gap-6 mb-4">
-        <a href="#" class="hover:text-blue-600"><i data-lucide="github"></i></a>
-        <a href="#" class="hover:text-blue-600"
-          ><i data-lucide="linkedin"></i
-        ></a>
-        <a href="#" class="hover:text-blue-600"><i data-lucide="mail"></i></a>
+        <i data-lucide="github"></i>
+        <i data-lucide="linkedin"></i>
+        <i data-lucide="mail"></i>
       </div>
+
       © 2024 Ahmad Pijar. All Rights Reserved.
     </footer>
 
