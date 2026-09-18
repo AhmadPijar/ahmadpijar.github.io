@@ -1,59 +1,50 @@
-// ===============================
-// Mobile Menu Toggle
-// ===============================
-const menuBtn = document.getElementById("menu-btn");
-const mobileMenu = document.getElementById("mobile-menu");
+// Rewritten script for root bridge page
+document.addEventListener('DOMContentLoaded', () => {
+  // Mobile menu toggle
+  const mobileBtn = document.getElementById('mobile-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
 
-menuBtn.addEventListener("click", (e) => {
-  e.stopPropagation(); // Prevent closing logic
-  mobileMenu.classList.toggle("hidden");
-});
+  if (mobileBtn && mobileMenu) {
+    mobileBtn.addEventListener('click', (e) => {
+      const expanded = mobileBtn.getAttribute('aria-expanded') === 'true';
+      mobileBtn.setAttribute('aria-expanded', (!expanded).toString());
+      mobileMenu.classList.toggle('hidden');
+      const icon = mobileBtn.querySelector('i');
+      if (icon) icon.setAttribute('data-lucide', mobileMenu.classList.contains('hidden') ? 'menu' : 'x');
+      if (window.lucide) lucide.createIcons();
+      e.stopPropagation();
+    });
 
-// ===============================
-// Click Outside to Close Menu
-// ===============================
-document.addEventListener("click", function (event) {
-  const isClickInsideMenu = mobileMenu.contains(event.target);
-  const isClickHamburger = menuBtn.contains(event.target);
-
-  // jika klik bukan di menu dan bukan tombol hamburger
-  if (!isClickInsideMenu && !isClickHamburger) {
-    mobileMenu.classList.add("hidden");
+    // Click outside closes menu
+    document.addEventListener('click', (ev) => {
+      if (!mobileMenu.contains(ev.target) && !mobileBtn.contains(ev.target)) {
+        if (!mobileMenu.classList.contains('hidden')) {
+          mobileMenu.classList.add('hidden');
+          mobileBtn.setAttribute('aria-expanded', 'false');
+          const icon = mobileBtn.querySelector('i');
+          if (icon) icon.setAttribute('data-lucide', 'menu');
+          if (window.lucide) lucide.createIcons();
+        }
+      }
+    });
   }
-});
 
-// ===============================
-// Navbar Scroll Feature
-// ===============================
-const navbar = document.querySelector("nav");
-let lastScrollY = 0;
+  // Navbar scroll behavior
+  const navbar = document.getElementById('navbar');
+  let lastY = window.scrollY;
+  const onScroll = () => {
+    const y = window.scrollY;
+    if (Math.abs(y - lastY) < 1) return;
+    lastY = y;
+    if (y > 20) navbar.classList.add('navbar-scroll');
+    else navbar.classList.remove('navbar-scroll');
+  };
+  window.addEventListener('scroll', () => requestAnimationFrame(onScroll));
 
-function handleScroll() {
-  const currentScroll = window.scrollY;
-
-  // Jika tidak berubah → hentikan
-  if (Math.abs(currentScroll - lastScrollY) < 1) return;
-  lastScrollY = currentScroll;
-
-  if (currentScroll > 1) {
-    navbar.classList.add("navbar-scroll");
-    navbar.classList.remove("navbar-top");
-  } else {
-    navbar.classList.remove("navbar-scroll");
-    navbar.classList.add("navbar-top");
-  }
-}
-
-window.addEventListener("scroll", () => {
-  requestAnimationFrame(handleScroll);
-});
-
-// initial state
-handleScroll();
-
-// ===============================
-// Fade-in animation on load
-// ===============================
-document.addEventListener("DOMContentLoaded", () => {
-  document.body.classList.add("fade-in");
+  // Brand click to about
+  const brand = document.getElementById('brand');
+  if (brand)
+    brand.addEventListener('click', () => {
+      window.location.href = 'https://ahmadpijar.github.io/my-portofolio/#/about';
+    });
 });

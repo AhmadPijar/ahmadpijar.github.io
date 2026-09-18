@@ -1,230 +1,304 @@
 <!doctype html>
 <html lang="id">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Ahmad Pijar — Portfolio</title>
 
-    <!-- Tailwind -->
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+    <!-- Tailwind CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- Lucide Icons -->
+    <!-- Lucide Icons CDN -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
-    <style>
-      body {
-        scroll-behavior: smooth;
+    <!-- Tailwind Custom Configuration (Menyamakan dengan index.css Vite) -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
+            },
+            colors: {
+              primary: '#0f172a',
+              head: '#0f172a',
+              info: '#475569',
+              info2: '#64748b',
+            },
+          },
+        },
+      };
+    </script>
+
+    <!-- Custom CSS Base & Components -->
+    <style type="text/tailwindcss">
+      @layer base {
+        body,
+        html {
+          @apply m-0 min-h-screen text-slate-800 scroll-smooth;
+        }
+        body {
+          background-image: linear-gradient(180deg, #f8fafc 0%, #f3f6fb 100%);
+        }
+        ::selection {
+          @apply bg-sky-200 text-slate-900;
+        }
       }
 
-      .navbar-scroll {
-        background: rgba(255, 255, 255, 0.9);
-        backdrop-filter: blur(6px);
-        box-shadow: 0 6px 20px rgba(2, 6, 23, 0.06);
+      @layer components {
+        .navbar-scroll {
+          @apply border-b border-slate-200/80 bg-white/90 backdrop-blur shadow-sm;
+        }
       }
     </style>
   </head>
 
-  <body class="bg-slate-50 text-slate-800">
-    <!-- ==========================
-         NAVBAR (Updated)
-    =========================== -->
-    <nav id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all border-b border-transparent">
-      <div class="max-w-6xl mx-auto px-6 h-20 flex justify-between items-center">
-        <!-- Logo -->
-        <h1 class="text-xl font-bold cursor-pointer bg-gradient-to-r from-blue-700 to-purple-600 bg-clip-text text-transparent">My Portfolio</h1>
-
-        <!-- Desktop Menu -->
-        <div class="hidden md:flex gap-8">
-          <a href="https://ahmadpijar.github.io/my-portofolio" class="text-sm font-medium text-slate-700 hover:text-blue-600"> Home </a>
-          <a href="https://ahmadpijar.github.io/my-portofolio/#/about" class="text-sm font-medium text-slate-700 hover:text-blue-600"> About </a>
-          <a href="https://ahmadpijar.github.io/my-portofolio/#/projects" class="text-sm font-medium text-slate-700 hover:text-blue-600"> Projects </a>
-          <a href="https://ahmadpijar.github.io/my-portofolio/#/contact" class="text-sm font-medium text-slate-700 hover:text-blue-600"> Contact </a>
+  <body class="bg-slate-50 text-slate-800 overflow-hidden h-screen">
+    <!-- OVERLAY & POP-UP MODAL -->
+    <div class="fixed inset-0 z-[100] flex items-center justify-center bg-slate-900/50 p-4 backdrop-blur-sm">
+      <div class="relative w-full max-w-md scale-100 transform overflow-hidden rounded-[32px] bg-white p-8 text-center shadow-2xl transition-all sm:p-10">
+        <!-- Icon Banner -->
+        <div class="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-sky-50 text-sky-600 shadow-inner">
+          <i data-lucide="rocket" class="h-8 w-8"></i>
         </div>
 
-        <!-- Mobile Button -->
-        <button id="menu-btn" class="md:hidden">
-          <i data-lucide="menu"></i>
+        <!-- Text Content -->
+        <h3 class="mb-3 text-2xl font-bold tracking-tight text-slate-900">Portfolio Updated</h3>
+        <p class="mb-8 text-sm leading-relaxed text-slate-600">This page serves as a bridge. To explore my full work experience, projects, and interactive journal, please proceed to the main website.</p>
+
+        <!-- Action Button -->
+        <a
+          href="https://ahmadpijar.github.io/my-portofolio/"
+          class="inline-flex w-full items-center justify-center gap-2 rounded-full bg-slate-900 px-6 py-3.5 text-sm font-semibold text-white shadow-md transition-all hover:bg-slate-800 hover:shadow-lg sm:w-auto sm:px-8"
+        >
+          Enter Full Portfolio <i data-lucide="arrow-right" class="h-4 w-4"></i>
+        </a>
+      </div>
+    </div>
+    <!-- NAVBAR -->
+    <nav id="navbar" class="fixed left-0 top-0 z-50 w-full transition-all duration-160 ease-in-out bg-transparent border-b border-transparent">
+      <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
+        <!-- Logo & Brand (Bridge Link) -->
+        <a href="https://ahmadpijar.github.io/my-portofolio/" class="flex items-center gap-2 text-left group">
+          <div class="flex h-10 w-10 items-center justify-center rounded-2xl border border-slate-200 bg-slate-50 text-slate-700 transition-colors group-hover:border-slate-300">
+            <i data-lucide="workflow" class="h-[18px] w-[18px]"></i>
+          </div>
+          <div>
+            <p class="text-sm font-semibold tracking-[0.24em] text-slate-500 uppercase">Portfolio</p>
+            <p class="text-base font-semibold text-slate-900 group-hover:text-violet-800 transition-colors">Ahmad Pijar Maulana</p>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <div class="hidden gap-8 md:flex">
+          <a href="https://ahmadpijar.github.io/my-portofolio/" class="text-sm font-medium text-slate-700 transition hover:text-violet-800">Home</a>
+          <a href="https://ahmadpijar.github.io/my-portofolio/#/about" class="text-sm font-medium text-slate-700 transition hover:text-violet-800">About</a>
+          <a href="https://ahmadpijar.github.io/my-portofolio/#/projects" class="text-sm font-medium text-slate-700 transition hover:text-violet-800">Projects</a>
+          <a href="https://ahmadpijar.github.io/my-portofolio/#/contact" class="text-sm font-medium text-slate-700 transition hover:text-violet-800">Contact</a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button id="mobile-btn" class="rounded-full border border-slate-200 bg-white p-2 text-slate-700 md:hidden hover:bg-slate-50 transition" aria-expanded="false">
+          <i data-lucide="menu" class="h-5 w-5"></i>
         </button>
       </div>
 
       <!-- Mobile Menu -->
-      <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg">
-        <div class="flex flex-col p-4 gap-2">
-          <a href="https://ahmadpijar.github.io/my-portofolio" class="text-sm py-2 px-3 rounded-lg hover:bg-slate-100"> Home </a>
-          <a href="https://ahmadpijar.github.io/my-portofolio/#/about" class="text-sm py-2 px-3 rounded-lg hover:bg-slate-100"> About </a>
-          <a href="https://ahmadpijar.github.io/my-portofolio/#/projects" class="text-sm py-2 px-3 rounded-lg hover:bg-slate-100"> Projects </a>
-          <a href="https://ahmadpijar.github.io/my-portofolio/#/contact" class="text-sm py-2 px-3 rounded-lg hover:bg-slate-100"> Contact </a>
+      <div id="mobile-menu" class="hidden md:hidden border-t border-slate-200 bg-white/95 px-4 py-3 shadow-lg absolute w-full">
+        <div class="flex flex-col gap-2">
+          <a href="https://ahmadpijar.github.io/my-portofolio/" class="rounded-2xl px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100">Home</a>
+          <a href="https://ahmadpijar.github.io/my-portofolio/#/about" class="rounded-2xl px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100">About</a>
+          <a href="https://ahmadpijar.github.io/my-portofolio/#/projects" class="rounded-2xl px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100">Projects</a>
+          <a href="https://ahmadpijar.github.io/my-portofolio/#/contact" class="rounded-2xl px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100">Contact</a>
         </div>
       </div>
     </nav>
 
-    <script>
-      lucide.createIcons();
+    <!-- MAIN CONTENT -->
+    <main class="max-w-7xl mx-auto px-6 py-24 md:pt-36 space-y-20 pb-10">
+      <!-- STORY BLOCK 1: Focus Area & Intro -->
+      <section class="space-y-8 bg-[radial-gradient(circle_at_top_left,_rgba(14,165,233,0.12),_transparent_36%),linear-gradient(135deg,_#f8fbff_0%,_#f5f7fb_100%)] rounded-[32px] p-6 sm:p-8 border border-slate-200/60 shadow-sm">
+        <!-- StoryBlock Content (Gradient Container) -->
 
-      const nav = document.getElementById('navbar');
-      window.addEventListener('scroll', () => {
-        if (window.scrollY > 20) nav.classList.add('navbar-scroll');
-        else nav.classList.remove('navbar-scroll');
-      });
-
-      const btn = document.getElementById('menu-btn');
-      const menu = document.getElementById('mobile-menu');
-      btn.addEventListener('click', () => {
-        menu.classList.toggle('hidden');
-      });
-    </script>
-
-    <!-- ==========================
-         HERO SECTION (Matching React)
-    =========================== -->
-    <section class="max-w-6xl mx-auto px-6 py-24 md:pt-36 flex flex-col md:flex-row items-center gap-20">
-      <!-- Left -->
-      <div class="md:w-1/2 space-y-6">
-        <div class="inline-flex items-center px-3 py-1 bg-blue-50 border border-blue-200 text-xs rounded-full text-blue-700 font-semibold">
-          <span class="w-2 h-2 rounded-full bg-blue-700 mr-2 animate-pulse"></span>
-          Open to work
+        <!-- StoryBlock Header -->
+        <div class="space-y-3 max-w-3xl">
+          <p class="text-sm font-semibold tracking-widest text-slate-500 uppercase">WORK, PROJECTS & JOURNAL</p>
+          <h2 class="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Learning through work, building through problems.</h2>
+          <p class="text-lg leading-relaxed text-slate-600">
+            This portfolio is a record of my work experience, practical projects, and the things I have learned along the way — from warehouse operations and administration to using simple digital tools to make everyday work easier to
+            follow.
+          </p>
         </div>
-
-        <h1 class="text-5xl md:text-6xl font-extrabold leading-tight">
-          Hello I'm
-          <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600"> Ahmad Pijar Maulana </span>
-        </h1>
-
-        <p class="text-lg text-slate-600 leading-relaxed max-w-md">
-          I am a dedicated administrative professional with a strong foundation in back-office support, data management, and digital office tools. Currently working as a Warehouse Administrator at Rentokil Initial (Metro East Branch), I
-          specialize in streamlining operations and building automated tracking systems. This portfolio showcases my projects in data reconciliation and digital administration designed to enhance business efficiency.
-        </p>
-
-        <div class="flex flex-wrap gap-4 pt-6">
-          <a href="https://ahmadpijar.github.io/my-portofolio/#/about" class="px-8 py-3 bg-slate-900 text-white rounded-lg font-semibold shadow-md hover:bg-slate-800 hover:shadow-lg hover:-translate-y-0.5 transition-all">
-            See My Profile
-          </a>
-
-          <a
-            href="https://ahmadpijar.github.io/my-portofolio/#/contact"
-            class="px-8 py-3 bg-white border border-slate-300 text-slate-700 rounded-lg font-semibold shadow-md hover:bg-slate-100 hover:shadow-lg hover:-translate-y-0.5 transition-all"
-          >
-            Contact Me
-          </a>
-        </div>
-      </div>
-
-      <!-- Right -->
-      <div class="md:w-1/2 flex justify-center">
-        <div class="w-full max-w-sm mx-auto rounded-2xl p-6 bg-gradient-to-tr from-slate-100 to-blue-50 border border-white shadow-xl">
-          <div class="flex flex-col items-center gap-4">
-            <div class="w-60 h-60 rounded-full overflow-hidden border-4 border-white shadow-lg">
-              <img src="./asset/Me.jpg" alt="Ahmad Pijar" class="w-full h-full object-cover" />
+        <div class="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
+          <!-- Left Card -->
+          <div class="space-y-5 rounded-[24px] border border-slate-200 bg-white/80 p-6 sm:p-8 shadow-sm backdrop-blur-sm">
+            <div class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.24em] text-slate-600">
+              <i data-lucide="sparkles" class="h-3.5 w-3.5 text-sky-600"></i>
+              How I approach work
             </div>
 
-            <div class="bg-white rounded-xl shadow p-4 text-center w-full">
-              <div class="text-sm text-slate-600 font-mono">Ahmad Pijar Maulana</div>
-              <div class="mt-2 text-xs text-slate-500">
-                Warehouse Administrator at Rentokil Initial (Metro East Branch) | Data Reconciliation & Digital Administration Projects
+            <h3 class="text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">
+              I usually notice the small things that make work harder than it should be — repeated data entry, requests that get lost, or a process that depends too much on memory.
+            </h3>
+
+            <p class="text-base leading-7 text-slate-600">
+              Some of the projects in this portfolio started from those moments. I began experimenting with spreadsheets, Apps Script, and simple web tools to see whether some of these small problems could be handled in a simpler, more
+              structured way.
+            </p>
+
+            <div class="flex flex-wrap gap-3 pt-2">
+              <a href="https://ahmadpijar.github.io/my-portofolio/#/projects" class="inline-flex items-center gap-2 rounded-full bg-slate-900 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-slate-700 shadow-sm">
+                Explore the cases <i data-lucide="arrow-right" class="h-4 w-4"></i>
+              </a>
+              <a href="https://ahmadpijar.github.io/my-portofolio/#/about" class="rounded-full border border-slate-300 bg-white px-5 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-slate-50"> Read my journey </a>
+            </div>
+          </div>
+
+          <!-- Right Column (Info Pills - Extracted to raw HTML) -->
+          <div class="grid gap-3">
+            <!-- Pill: Default Tone -->
+            <div class="flex flex-col justify-center rounded-[24px] border border-slate-200 bg-white/60 p-6 shadow-sm backdrop-blur-sm">
+              <div class="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">WHAT I HAVE SEEN</div>
+              <div class="mt-2 text-sm font-medium text-slate-800">Manual records, scattered requests, repetitive checks</div>
+            </div>
+
+            <!-- Pill: Accent Tone -->
+            <div class="flex flex-col justify-center rounded-[24px] border border-indigo-100 bg-indigo-50/50 p-6 shadow-sm backdrop-blur-sm">
+              <div class="text-xs font-semibold uppercase tracking-[0.24em] text-indigo-600">WHAT I LIKE TO EXPLORE</div>
+              <div class="mt-2 text-sm font-medium text-indigo-900">Spreadsheets, simple automation, structured workflows</div>
+            </div>
+
+            <!-- Pill: Success Tone -->
+            <div class="flex flex-col justify-center rounded-[24px] border border-emerald-100 bg-emerald-50/50 p-6 shadow-sm backdrop-blur-sm">
+              <div class="text-xs font-semibold uppercase tracking-[0.24em] text-emerald-600">WHAT I AM BUILDING</div>
+              <div class="mt-2 text-sm font-medium text-emerald-900">Clearer documentation, practical tools, stronger digital habits</div>
             </div>
           </div>
         </div>
+      </section>
+
+      <!-- STORY BLOCK 2: Projects Preview -->
+      <section class="space-y-8">
+        <!-- StoryBlock Header -->
+        <div class="space-y-3 max-w-3xl">
+          <p class="text-sm font-semibold tracking-widest text-slate-500 uppercase">A Few Things I Have Built</p>
+          <h2 class="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Some of these projects started from simple problems I encountered at work.</h2>
+          <p class="text-lg leading-relaxed text-slate-600">Others were built while I was learning and experimenting with digital tools.</p>
+        </div>
+
+        <!-- Projects Grid -->
+        <div class="grid gap-4 lg:grid-cols-3 cursor-pointer" onclick="window.location.href = 'https://ahmadpijar.github.io/my-portofolio/#/projects'">
+          <div class="rounded-[24px] border border-slate-200 bg-white p-6 shadow-sm transition hover:shadow-md hover:border-slate-300">
+            <div class="mb-4 flex h-11 w-11 items-center justify-center rounded-2xl bg-slate-50 border border-slate-100 text-sky-700 shadow-sm">
+              <i data-lucide="file-search" class="h-5 w-5"></i>
+            </div>
+            <h3 class="text-lg font-semibold text-slate-900">Requisition Worksheet</h3>
+            <p class="mt-2 text-sm leading-6 text-slate-600">
+              A small project that started from a simple problem: keeping track of item requests coming from different channels. I wanted one place to collect them so the process was easier to follow.
+            </p>
+          </div>
+
+          <div class="rounded-[24px] border border-slate-200 bg-white p-6 shadow-sm transition hover:shadow-md hover:border-slate-300">
+            <div class="mb-4 flex h-11 w-11 items-center justify-center rounded-2xl bg-slate-50 border border-slate-100 text-sky-700 shadow-sm">
+              <i data-lucide="layers-3" class="h-5 w-5"></i>
+            </div>
+            <h3 class="text-lg font-semibold text-slate-900">Input Ledger</h3>
+            <p class="mt-2 text-sm leading-6 text-slate-600">
+              An experiment in turning repetitive manual entries into a more organized digital record. It helped me keep information easier to trace without depending on memory or scattered notes.
+            </p>
+          </div>
+
+          <div class="rounded-[24px] border border-slate-200 bg-white p-6 shadow-sm transition hover:shadow-md hover:border-slate-300">
+            <div class="mb-4 flex h-11 w-11 items-center justify-center rounded-2xl bg-slate-50 border border-slate-100 text-sky-700 shadow-sm">
+              <i data-lucide="sparkles" class="h-5 w-5"></i>
+            </div>
+            <h3 class="text-lg font-semibold text-slate-900">Compare Automation</h3>
+            <p class="mt-2 text-sm leading-6 text-slate-600">A small comparison tool I built to reduce repetitive checking when comparing records. It was simple, practical, and useful when I needed to spot differences quickly.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER (Sesuai dengan Footer.jsx) -->
+    <footer class="mt-20 py-10 border-t border-slate-200 bg-white/50 backdrop-blur">
+      <div class="max-w-6xl mx-auto px-6 text-center space-y-3">
+        <p class="text-sm text-slate-500">© <span id="year"></span> Ahmad Pijar Maulana — All Rights Reserved.</p>
+        <p class="text-xs text-slate-400">Bridge Page — Redirecting to React & TailwindCSS App</p>
       </div>
-    </section>
-
-    <!-- ==========================
-         DISCOVER SECTION (React version)
-    =========================== -->
-    <section class="max-w-6xl mx-auto px-6 py-20 border-t border-slate-200">
-      <div class="text-center mb-14">
-        <h2 class="text-3xl font-bold">What Will You Discover on This Portfolio?</h2>
-        <p class="text-slate-500 mt-2 max-w-xl mx-auto">A quick overview of my journey, the skills I’ve learned, and the work I’ve created during my digital training.</p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-        <div class="p-6 bg-white rounded-xl border hover:shadow-lg transition">
-          <div class="w-12 h-12 bg-slate-100 rounded-lg flex items-center justify-center mb-4">
-            <i data-lucide="circle-user-round" class="text-cyan-700"></i>
-          </div>
-          <h3 class="font-bold mb-2">My Background</h3>
-          <p class="text-sm text-slate-500">A brief look at who I am and where I come from.</p>
-        </div>
-
-        <div class="p-6 bg-white rounded-xl border hover:shadow-lg transition">
-          <div class="w-12 h-12 bg-slate-100 rounded-lg flex items-center justify-center mb-4">
-            <i data-lucide="route" class="text-blue-700"></i>
-          </div>
-          <h3 class="font-bold mb-2">My Experience</h3>
-          <p class="text-sm text-slate-500">The work and activities I’ve been involved in so far.</p>
-        </div>
-
-        <div class="p-6 bg-white rounded-xl border hover:shadow-lg transition">
-          <div class="w-12 h-12 bg-slate-100 rounded-lg flex items-center justify-center mb-4">
-            <i data-lucide="code" class="text-indigo-600"></i>
-          </div>
-          <h3 class="font-bold mb-2">My Skills</h3>
-          <p class="text-sm text-slate-500">The abilities and tools I’m familiar with.</p>
-        </div>
-
-        <div class="p-6 bg-white rounded-xl border hover:shadow-lg transition">
-          <div class="w-12 h-12 bg-slate-100 rounded-lg flex items-center justify-center mb-4">
-            <i data-lucide="git-pull-request-create" class="text-purple-600"></i>
-          </div>
-          <h3 class="font-bold mb-2">My Projects</h3>
-          <p class="text-sm text-slate-500">A showcase of the work I’ve created.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==========================
-         STATS SECTION (React version)
-    =========================== -->
-    <section class="max-w-6xl mx-auto px-6 py-20">
-      <div class="bg-slate-900 text-white rounded-3xl p-10 md:p-16 text-center relative overflow-hidden">
-        <h2 class="text-3xl font-bold mb-4">Professional Highlights</h2>
-
-        <p class="text-slate-400 mb-10 max-w-xl mx-auto">A quick look at my progress, learning journey, and readiness to begin my professional career.</p>
-
-        <div class="flex flex-wrap justify-center gap-8 md:gap-16">
-          <div>
-            <div class="text-4xl font-bold">3+</div>
-            <p class="text-sm text-slate-400">Year of work experience</p>
-          </div>
-
-          <div>
-            <div class="text-4xl font-bold">5+</div>
-            <p class="text-sm text-slate-400">Digital tool Skills</p>
-          </div>
-
-          <div>
-            <div class="text-4xl font-bold">3</div>
-            <p class="text-sm text-slate-400">Personal Projects</p>
-          </div>
-
-          <div>
-            <div class="text-4xl font-bold">2026</div>
-            <p class="text-sm text-slate-400">Open to Work</p>
-          </div>
-        </div>
-
-        <!-- Lights -->
-        <div class="absolute top-0 left-0 w-full h-full opacity-20 pointer-events-none">
-          <div class="absolute top-0 right-0 w-64 h-64 bg-blue-600 rounded-full blur-[100px] translate-x-1/2 -translate-y-1/2"></div>
-          <div class="absolute bottom-0 left-0 w-64 h-64 bg-purple-600 rounded-full blur-[100px] -translate-x-1/2 translate-y-1/2"></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==========================
-         FOOTER
-    =========================== -->
-    <footer class="bg-white border-t border-slate-200 py-8 text-center text-slate-500 text-sm">
-      <div class="flex justify-center gap-6 mb-4">
-        <i data-lucide="github"></i>
-        <i data-lucide="linkedin"></i>
-        <i data-lucide="mail"></i>
-      </div>
-
-      © 2024 Ahmad Pijar. All Rights Reserved.
     </footer>
 
+    <!-- SCRIPTS -->
     <script>
-      lucide.createIcons();
+      // Set current year for footer
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      // Initialize all Lucide icons
+      document.addEventListener('DOMContentLoaded', () => {
+        if (window.lucide) {
+          lucide.createIcons();
+        }
+
+        // Mobile menu toggle functionality
+        const mobileBtn = document.getElementById('mobile-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        if (mobileBtn && mobileMenu) {
+          mobileBtn.addEventListener('click', (e) => {
+            const expanded = mobileBtn.getAttribute('aria-expanded') === 'true';
+            mobileBtn.setAttribute('aria-expanded', (!expanded).toString());
+            mobileMenu.classList.toggle('hidden');
+
+            const icon = mobileBtn.querySelector('i');
+            if (icon) {
+              icon.setAttribute('data-lucide', mobileMenu.classList.contains('hidden') ? 'menu' : 'x');
+              lucide.createIcons();
+            }
+            e.stopPropagation();
+          });
+
+          // Close mobile menu when clicking outside
+          document.addEventListener('click', (ev) => {
+            if (!mobileMenu.contains(ev.target) && !mobileBtn.contains(ev.target)) {
+              if (!mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.add('hidden');
+                mobileBtn.setAttribute('aria-expanded', 'false');
+                const icon = mobileBtn.querySelector('i');
+                if (icon) {
+                  icon.setAttribute('data-lucide', 'menu');
+                  lucide.createIcons();
+                }
+              }
+            }
+          });
+        }
+
+        // Navbar scroll styling behavior
+        const navbar = document.getElementById('navbar');
+        let lastY = window.scrollY;
+
+        const handleScroll = () => {
+          const y = window.scrollY;
+          if (Math.abs(y - lastY) < 1) return;
+          lastY = y;
+
+          if (y > 20) {
+            navbar.classList.add('navbar-scroll');
+            navbar.classList.remove('bg-transparent', 'border-transparent');
+          } else {
+            navbar.classList.remove('navbar-scroll');
+            navbar.classList.add('bg-transparent', 'border-transparent');
+          }
+        };
+
+        // Initial check and event listener
+        handleScroll();
+        window.addEventListener('scroll', () => requestAnimationFrame(handleScroll));
+      });
     </script>
   </body>
 </html>
